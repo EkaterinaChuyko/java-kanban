@@ -149,7 +149,7 @@ public class TaskManager {
 
         for (int id : subIds) {
             Subtask sub = subtasks.get(id);
-            if (sub == null) continue;  // на всякий случай
+            if (sub == null) continue;
             Status status = sub.getStatus();
             if (status == Status.DONE) doneCount++;
             else if (status == Status.NEW) newCount++;
