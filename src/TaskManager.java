@@ -11,6 +11,7 @@ public class TaskManager {
     private final Map<Integer, Subtask> subtasks = new HashMap<>();
     private int nextId = 1;
 
+
     public Task createTask(Task task) {
         task.setId(generateId());
         tasks.put(task.getId(), task);
