@@ -12,6 +12,10 @@ public class TaskManager {
     private int nextId = 1;
 
 
+    private int generateId() {
+        return nextId++;
+    }
+
     public Task createTask(Task task) {
         task.setId(generateId());
         tasks.put(task.getId(), task);
@@ -145,7 +149,7 @@ public class TaskManager {
 
         for (int id : subIds) {
             Subtask sub = subtasks.get(id);
-            if (sub == null) continue;
+            if (sub == null) continue;  // на всякий случай
             Status status = sub.getStatus();
             if (status == Status.DONE) doneCount++;
             else if (status == Status.NEW) newCount++;
@@ -158,8 +162,5 @@ public class TaskManager {
         } else {
             epic.setStatus(Status.IN_PROGRESS);
         }
-    }
-    private int generateId() {
-        return nextId++;
     }
 }
