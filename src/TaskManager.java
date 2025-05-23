@@ -12,11 +12,6 @@ public class TaskManager {
     private int nextId = 1;
 
 
-
-    private int generateId() {
-        return nextId++;
-    }
-
     public Task createTask(Task task) {
         task.setId(generateId());
         tasks.put(task.getId(), task);
@@ -136,6 +131,7 @@ public class TaskManager {
         return result;
     }
 
+
     private void updateEpicStatus(Epic epic) {
         if (epic == null) return;
 
@@ -163,5 +159,9 @@ public class TaskManager {
         } else {
             epic.setStatus(Status.IN_PROGRESS);
         }
+    }
+
+    private int generateId() {
+        return nextId++;
     }
 }
