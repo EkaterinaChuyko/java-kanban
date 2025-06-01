@@ -16,5 +16,4 @@ public class Subtask extends Task {
     public String toString() {
         return "Подзадача: " + super.toString() + " (эпик ID: " + epicId + ")";
     }
-
 }
