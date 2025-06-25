@@ -11,7 +11,7 @@ class InMemoryTaskManagerTest {
 
     @BeforeEach
     public void setUp() {
-        manager = new InMemoryTaskManager(new InMemoryHistoryManager());;
+        manager = new InMemoryTaskManager(new InMemoryHistoryManager());
     }
 
     @Test
