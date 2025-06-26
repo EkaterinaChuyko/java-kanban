@@ -1,7 +1,7 @@
-import Tasks.InMemoryTaskManager;
-import Tasks.InMemoryHistoryManager;
-import Tasks.Epic;
-import Tasks.Subtask;
+import tasks.InMemoryTaskManager;
+import tasks.InMemoryHistoryManager;
+import tasks.Epic;
+import tasks.Subtask;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
