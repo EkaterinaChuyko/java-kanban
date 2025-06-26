@@ -13,7 +13,6 @@ public class InMemoryTaskManager implements TaskManager {
         this.historyManager = historyManager;
     }
 
-
     @Override
     public Task createTask(Task task) {
         task.setId(ensureId(task));
@@ -170,7 +169,6 @@ public class InMemoryTaskManager implements TaskManager {
     public List<Task> getHistory() {
         return historyManager.getHistory();
     }
-
 
     private int generateId() {
         return nextId++;

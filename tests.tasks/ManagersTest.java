@@ -13,5 +13,4 @@ class ManagersTest {
     void getDefaultReturnsNonNullTaskManager() {
         assertNotNull(Managers.getDefault(), "TaskManager должен быть проинициализирован");
     }
-
 }

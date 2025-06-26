@@ -78,6 +78,6 @@ class InMemoryTaskManagerTest {
 
         List<Task> history = manager.getHistory();
         assertEquals(1, history.size());
-        assertEquals(task, history.get(0));
+        assertEquals(task, history.getFirst());
     }
 }

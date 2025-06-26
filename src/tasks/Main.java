@@ -27,7 +27,6 @@ public class Main {
                 Subtask sub3 = new Subtask("Отвезти кота к ветеринару", "Подготовить переноску", epic2.getId());
                 taskManager.createSubtask(sub3);
 
-
                 task1.setStatus(Status.NEW);
                 taskManager.updateTask(task1);
 
@@ -43,7 +42,6 @@ public class Main {
                 sub3.setStatus(Status.DONE);
                 taskManager.updateSubtask(sub3);
 
-
                 System.out.println("Показать все задачи: ");
                 System.out.println(taskManager.getAllTasks());
                 System.out.println("Показать все эпики: ");
@@ -51,11 +49,9 @@ public class Main {
                 System.out.println("Отобразить все подзадачи: ");
                 System.out.println(taskManager.getAllSubtasks());
 
-
                 System.out.println("Проверить статус эпика после обновления: ");
                 System.out.println("Эпик №1: " + taskManager.getEpic(epic1.getId()));
                 System.out.println("Эпик №2: " + taskManager.getEpic(epic2.getId()));
-
 
                 taskManager.getTask(task1.getId());
                 taskManager.getEpic(epic1.getId());

@@ -39,5 +39,4 @@ class SubtaskTest {
         assertNotNull(created);
         assertEquals(epic.getId(), created.getEpicId());
     }
-
 }
