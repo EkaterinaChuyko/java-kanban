@@ -8,7 +8,7 @@ public class Epic extends Task {
     private final List<Integer> subtaskIds = new ArrayList<>();
 
     public Epic(String title, String description) {
-        super(title, description);
+        super(title, description, Status.NEW);
     }
 
     public List<Integer> getSubtaskIds() {
@@ -25,6 +25,11 @@ public class Epic extends Task {
 
     public void clearSubtasks() {
         subtaskIds.clear();
+    }
+
+    @Override
+    public String getType() {
+        return "EPIC";
     }
 
     @Override
