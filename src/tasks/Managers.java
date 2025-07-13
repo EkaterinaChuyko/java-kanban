@@ -1,4 +1,4 @@
-package Tasks;
+package tasks;
 
 public class Managers {
     public static HistoryManager getDefaultHistory() {

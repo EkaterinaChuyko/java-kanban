@@ -1,4 +1,4 @@
-package Tasks;
+package tasks;
 
 import java.util.*;
 
@@ -12,7 +12,6 @@ public class InMemoryTaskManager implements TaskManager {
     public InMemoryTaskManager(HistoryManager historyManager) {
         this.historyManager = historyManager;
     }
-
 
     @Override
     public Task createTask(Task task) {
@@ -170,7 +169,6 @@ public class InMemoryTaskManager implements TaskManager {
     public List<Task> getHistory() {
         return historyManager.getHistory();
     }
-
 
     private int generateId() {
         return nextId++;

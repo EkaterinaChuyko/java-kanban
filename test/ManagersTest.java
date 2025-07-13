@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
-import Tasks.Managers;
+
+import tasks.Managers;
 
 class ManagersTest {
 
@@ -13,5 +15,4 @@ class ManagersTest {
     void getDefaultReturnsNonNullTaskManager() {
         assertNotNull(Managers.getDefault(), "TaskManager должен быть проинициализирован");
     }
-
 }
