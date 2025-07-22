@@ -60,8 +60,6 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         return manager;
     }
 
-    private final File file;
-
     @Override
     public Task createTask(Task task) {
         Task t = super.createTask(task);
@@ -136,6 +134,8 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         super.deleteAllSubtasks();
         save();
     }
+
+    private final File file;
 
     private void save() {
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8)) {

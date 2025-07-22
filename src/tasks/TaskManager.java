@@ -43,6 +43,10 @@ public interface TaskManager {
     Subtask getSubtask(int id);
 
     List<Subtask> getSubtasksByEpic(int epicId);
+
+    List<Task> getPrioritizedTasks();
+
+    boolean isTaskTimeIntersect(Task task);
 }
 
 

@@ -1,4 +1,5 @@
-import tasks.*;
+package tasks;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -6,12 +7,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InMemoryTaskManagerTest {
+class InMemoryTaskManagerTest extends tasks.TaskManagerTest<InMemoryTaskManager> {
+
     private InMemoryTaskManager manager;
 
     @BeforeEach
     public void setUp() {
         manager = new InMemoryTaskManager(new InMemoryHistoryManager());
+    }
+
+    @Override
+    protected InMemoryTaskManager createManager() {
+        return new InMemoryTaskManager(new InMemoryHistoryManager());
     }
 
     @Test
@@ -29,7 +36,7 @@ class InMemoryTaskManagerTest {
 
     @Test
     void addsAndFindsTasksById() {
-        Task task = new Task("Task", "Desc");
+        Task task = new Task("Task", "Desc", Status.NEW);
         manager.createTask(task);
         Task found = manager.getTask(task.getId());
 
@@ -41,7 +48,7 @@ class InMemoryTaskManagerTest {
     void handlesDifferentTypes() {
         Epic epic = manager.createEpic(new Epic("Epic", "desc"));
         Subtask subtask = manager.createSubtask(new Subtask("Sub", "desc", epic.getId()));
-        Task task = manager.createTask(new Task("Task", "desc"));
+        Task task = manager.createTask(new Task("Task", "desc", Status.NEW));
 
         assertEquals(epic, manager.getEpic(epic.getId()));
         assertEquals(subtask, manager.getSubtask(subtask.getId()));
@@ -50,11 +57,11 @@ class InMemoryTaskManagerTest {
 
     @Test
     void customIdAndGeneratedIdDoNotConflict() {
-        Task task1 = new Task("Task1", "Desc1");
+        Task task1 = new Task("Task1", "Desc1", Status.NEW);
         task1.setId(100);
         manager.createTask(task1);
 
-        Task task2 = new Task("Task2", "Desc2");
+        Task task2 = new Task("Task2", "Desc2", Status.NEW);
         manager.createTask(task2);
 
         assertNotEquals(task1.getId(), task2.getId());
@@ -62,7 +69,7 @@ class InMemoryTaskManagerTest {
 
     @Test
     void addedTaskIsNotModified() {
-        Task task = new Task("Original", "Desc");
+        Task task = new Task("Original", "Desc", Status.NEW);
         manager.createTask(task);
 
         Task retrieved = manager.getTask(task.getId());
@@ -73,11 +80,11 @@ class InMemoryTaskManagerTest {
 
     @Test
     void tasksAreAddedToHistory() {
-        Task task = manager.createTask(new Task("T", "D"));
+        Task task = manager.createTask(new Task("T", "D", Status.NEW));
         manager.getTask(task.getId());
 
         List<Task> history = manager.getHistory();
         assertEquals(1, history.size());
-        assertEquals(task, history.getFirst());
+        assertEquals(task, history.get(0));
     }
 }

@@ -1,25 +1,35 @@
 package tasks;
 
 import java.util.Objects;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 public class Task {
-    private String title;
-    private String description;
-    private int id;
-    private Status status;
+    protected String title;
+    protected String description;
+    protected int id;
+    protected Status status;
+    protected Duration duration;
+    protected LocalDateTime startTime;
 
     public String getType() {
         return "TASK";
     }
 
-    public Task(String title, String description, Status status) {
+    public Task(String title, String description, Status status, Duration duration, LocalDateTime startTime) {
         this.title = title;
         this.description = description;
         this.status = status;
+        this.duration = duration;
+        this.startTime = startTime;
+    }
+
+    public Task(String title, String description, Status status) {
+        this(title, description, status, Duration.ZERO, null);
     }
 
     public Task(String title, String description) {
-        this(title, description, Status.NEW);
+        this(title, description, Status.NEW, Duration.ZERO, null);
     }
 
     public String getTitle() {
@@ -54,9 +64,33 @@ public class Task {
         this.status = status;
     }
 
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        if (startTime == null || duration == null) {
+            return null;
+        }
+        return startTime.plus(duration);
+    }
+
     @Override
     public String toString() {
-        return "ID: " + id + ", Заголовок: " + title + ", Описание: " + description + ", Статус: " + status;
+        return "Task{" + "id=" + id + ", title='" + title + '\'' + ", description='" + description + '\'' + ", \n" +
+                "status=" + status + ", duration=" + duration + ", startTime=" + startTime + '}';
     }
 
     @Override
