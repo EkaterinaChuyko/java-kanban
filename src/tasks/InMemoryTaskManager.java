@@ -10,6 +10,8 @@ public class InMemoryTaskManager implements TaskManager {
     protected final Map<Integer, Subtask> subtasks = new HashMap<>();
     protected int nextId = 1;
     protected final HistoryManager historyManager;
+    private final NavigableSet<Task> prioritizedTasks = new TreeSet<>(Comparator.comparing(Task::getStartTime,
+            Comparator.nullsLast(LocalDateTime::compareTo)).thenComparingInt(Task::getId));
 
     public InMemoryTaskManager(HistoryManager historyManager) {
         this.historyManager = historyManager;
@@ -245,9 +247,6 @@ public class InMemoryTaskManager implements TaskManager {
             epic.setStatus(Status.IN_PROGRESS);
         }
     }
-
-    private final NavigableSet<Task> prioritizedTasks = new TreeSet<>(Comparator.comparing(Task::getStartTime,
-            Comparator.nullsLast(LocalDateTime::compareTo)).thenComparingInt(Task::getId));
 
     private void addToPrioritizedTasks(Task task) {
         if (task.getStartTime() != null && task.getDuration() != null && !prioritizedTasks.contains(task)) {
