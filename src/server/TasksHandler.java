@@ -29,7 +29,8 @@ public class TasksHandler extends BaseHttpHandler {
             if (query != null && query.startsWith("id=")) {
                 try {
                     id = Integer.parseInt(query.substring(3));
-                } catch (NumberFormatException ignored) {}
+                } catch (NumberFormatException ignored) {
+                }
             }
 
             switch (method) {

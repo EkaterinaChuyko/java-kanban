@@ -19,10 +19,7 @@ public class HttpTaskServer {
 
     public HttpTaskServer(TaskManager manager) {
         this.manager = manager;
-        this.gson = new GsonBuilder()
-                .registerTypeAdapter(Duration.class, new DurationAdapter())
-                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
-                .create();
+        this.gson = new GsonBuilder().registerTypeAdapter(Duration.class, new DurationAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
     }
 
     public Gson getGson() {

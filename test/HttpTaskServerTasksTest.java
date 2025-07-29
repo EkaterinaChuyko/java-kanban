@@ -42,10 +42,7 @@ public class HttpTaskServerTasksTest {
         String json = server.getGson().toJson(task);
 
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/tasks"))
-                .POST(HttpRequest.BodyPublishers.ofString(json))
-                .build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://localhost:8080/tasks")).POST(HttpRequest.BodyPublishers.ofString(json)).build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
