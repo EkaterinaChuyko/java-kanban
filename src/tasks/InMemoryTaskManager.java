@@ -1,5 +1,7 @@
 package tasks;
 
+import com.google.gson.Gson;
+
 import java.util.*;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
@@ -15,6 +17,11 @@ public class InMemoryTaskManager implements TaskManager {
 
     public InMemoryTaskManager(HistoryManager historyManager) {
         this.historyManager = historyManager;
+    }
+
+    @Override
+    public Gson getGson() {
+        return null;
     }
 
     @Override

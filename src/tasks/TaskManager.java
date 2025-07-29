@@ -1,5 +1,7 @@
 package tasks;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 public interface TaskManager {
@@ -47,6 +49,8 @@ public interface TaskManager {
     List<Task> getPrioritizedTasks();
 
     boolean isTaskTimeIntersect(Task task);
+
+    Gson getGson();
 }
 
 
