@@ -5,26 +5,26 @@ public class Main {
         HistoryManager historyManager = new InMemoryHistoryManager();
         InMemoryTaskManager taskManager = new InMemoryTaskManager(historyManager);
 
-        Task task1 = new Task("Прочитать мангу", "Прочитать мангу Сага о Винланде", Status.NEW);
+        Task task1 = new Task("Прочитать мангу", "Прочитать мангу Сага о Винланде");
         taskManager.createTask(task1);
 
-        Task task2 = new Task("Отработать письмо", "Письмо по клиническому согласованию", Status.NEW);
+        Task task2 = new Task("Отработать письмо", "Письмо по клиническому согласованию");
         taskManager.createTask(task2);
 
         Epic epic1 = new Epic("Аниме", "Занятие на вечер, выбор аниме");
         taskManager.createEpic(epic1);
 
-        Subtask sub1 = new Subtask("Выбрать аниме", "Выбрать жанр", epic1.getId(), Status.DONE);
+        Subtask sub1 = new Subtask("Выбрать аниме", "Выбрать жанр", epic1.getId());
         taskManager.createSubtask(sub1);
 
-        Subtask sub2 = new Subtask("Прочесть отзывы", "Выбрать аниме по рейтингу", epic1.getId(), Status.DONE);
+        Subtask sub2 = new Subtask("Прочесть отзывы", "Выбрать аниме по рейтингу", epic1.getId());
         taskManager.createSubtask(sub2);
 
 
         Epic epic2 = new Epic("Поездка к ветеринару", "Плановый осмотр");
         taskManager.createEpic(epic2);
 
-        Subtask sub3 = new Subtask("Отвезти кота к ветеринару", "Подготовить переноску", epic2.getId(), Status.NEW);
+        Subtask sub3 = new Subtask("Отвезти кота к ветеринару", "Подготовить переноску", epic2.getId());
         taskManager.createSubtask(sub3);
 
         task1.setStatus(Status.NEW);
